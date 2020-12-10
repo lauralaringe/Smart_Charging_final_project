@@ -307,12 +307,12 @@ def get_irradiance_wind_data():
     table = data2[0]
 
     #Prepare df to return
-    IrradianceData=table['G(h)']
+    IrradianceData=table['G(h)']['2009-01-01']
     irradiance_df = pd.DataFrame(IrradianceData).reset_index()
     irradiance_df['time(UTC)']  = irradiance_df['time(UTC)'].apply((lambda x: x.hour))
     irradiance_df = irradiance_df.set_index('time(UTC)', drop=True)
     # print(irradiance_df)
-    wind_df = pd.DataFrame(WindData).reset_index()
+    wind_df = pd.DataFrame(WindData['2008-01-02']).reset_index()
     wind_df['time(UTC)'] = wind_df['time(UTC)'].apply((lambda x: x.hour))
     wind_df = wind_df.set_index('time(UTC)', drop=True)
     # print(wind_df)
