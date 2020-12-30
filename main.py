@@ -29,7 +29,7 @@ def write_virtual_pin_handler(pin, value):
 
     while total_time > 0:
 
-        print('Charging for', total_time)
+        print('Phone plugged for', total_time, " hours")
         price_df = get_price_data()
         irradiance_df, wind_df = get_irradiance_wind_data()
 
