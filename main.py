@@ -48,19 +48,20 @@ def write_virtual_pin_handler(pin, value):
 
         arduino = serial.Serial('COM4', 9600)
         current = arduino.readline().decode("utf-8")  # read from serial port
-        if current < 0.295:
+        if current < 0.295 or (time.time() - start_time >= 3600):
             arduino.write('L'.encode())
             print('Switch OFF')
 
         current_hour = datetime.datetime.now().hour
         if current_hour == maximum2.index[0] or current_hour == maximum2.index[1]:
+            start_time = time.time()
             arduino.write('H'.encode())
             print('Switch ON')
             time.sleep(60)  # wait 1 minute
 
             # check current if current 0 stop charging
             current = arduino.readline().decode("utf-8")
-            if current < 0.295:
+            if current < 0.295 or (time.time() - start_time >= 3600):
                 arduino.write('L'.encode())
                 print('Switch OFF')
 
