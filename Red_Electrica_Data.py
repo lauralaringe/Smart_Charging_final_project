@@ -15,7 +15,7 @@ def get_price_data():
         'Authorization': 'Token token=\"6b8f5a5cf5cdb176a7214275733e706786a1457ef5a86e4814b68f9c439c1501"',
         'Content-Type' : 'application/json'
     }
-    PARAMS = {'date' : '20201104'}
+    PARAMS = {'date' : '20211104'}
 
     response = requests.get(url = URL+GET, headers = HEADERS, params = PARAMS)
     data = response.json()

@@ -45,7 +45,7 @@ def write_virtual_pin_handler(pin, value):
 
         # Get the 2 maximum
         maximum2 = total_df['to_maximize'].nlargest(2)
-
+        start_time = 0
         arduino = serial.Serial('COM4', 9600)
         current = arduino.readline().decode("utf-8")  # read from serial port
         if current < 0.295 or (time.time() - start_time >= 3600):
